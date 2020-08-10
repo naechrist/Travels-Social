@@ -7,7 +7,7 @@ class StatesController < ApplicationController
     def create
         @state = State.new(state_params)
         @state.user_id = session[:user_id]
-        if @state.save
+        if @state.save #validations happen here
             redirect_to state_path(@state)
         else 
             render :new 
