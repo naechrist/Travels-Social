@@ -7,6 +7,8 @@ class State < ApplicationRecord
     validates :place, presence: true
     validate :not_a_duplicate 
 
+    scope :order_by_rating, -> {left_joins(:reviews).group(:id).order('avg(stars) desc')} #scope method, just changing the collection of methods
+
     def self.alpha #scope method 
         order(place: :asc)
     end 
@@ -21,7 +23,7 @@ class State < ApplicationRecord
         end 
     end 
 
-    def place_and_country 
+    def place_and_country #model methods are instance methods 
         "#{place} - #{country.name}"
     end     
 end

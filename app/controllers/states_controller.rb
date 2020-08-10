@@ -19,7 +19,7 @@ class StatesController < ApplicationController
     end 
 
     def index 
-        @states = State.all 
+        @states = State.order_by_rating 
     end 
 
     private 
