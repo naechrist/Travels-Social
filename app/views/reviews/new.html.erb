@@ -1,0 +1,25 @@
+<% if params[:state_id] %>
+    <h1>Add a Review for <%= @review.state.place %> in <%= @review.state.country.name %> </h1>
+<% else %>
+    <h1>Create a Review</h1>
+<% end %>
+
+<% render partial: "layouts/error", locals: {object: @review} %>
+
+<%= form_for(@review) do |f| %>
+    <div>
+        <%= f.label :stars %>
+        <%= f.number_field :stars, min:0, max:5 %>
+    </div>
+    <div>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+    </div>
+    <div>
+        <%= f.label :content %>
+        <%= f.text_area :content %>
+    </div>
+    <%= f.hidden_field :state_id %>
+
+    <%= f.submit "Add Review" %>
+<% end %>

@@ -1,0 +1,29 @@
+<h1>Add a State</h1>
+
+<% render partial: "layouts/error", locals: {object: @state} %>
+
+<%= form_for(@state) do |f| %> 
+    <div>
+        <%= f.label :place %>
+        <%= f.text_field :place %>
+    </div>
+    <div>
+        <%= f.label :description %>
+        <%= f.text_field :description %>
+    </div>
+
+    <p> Select a country that you've already visited: </p>
+    <div>
+        <%= f.collection_select :country_id, Country.all, :id, :name %>
+    </div>
+
+    <p> Or add a new country: </p>
+    <div> 
+        <%= f.fields_for :country, Country.new do |c| %>
+            <%= c.label :name %>
+            <%= c.text_field :name %>
+        <% end %>
+    </div>
+
+    <br><%= f.submit "Add Location" %>
+<% end %>

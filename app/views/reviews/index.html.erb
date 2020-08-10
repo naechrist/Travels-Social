@@ -1,0 +1,8 @@
+<h1>All of the Reviews</h1>
+
+<ul>
+    <% @reviews.each do |r| %>
+       <li><h2><%= r.state.place%>: <%= r.title %> - <%= r.stars %> stars </h2></li>
+        <p><%= r.content %></p>
+    <% end %>
+</ul>
