@@ -4,25 +4,4 @@
 
 <%= render partial: "layouts/error", locals: {object: @review} %>
 
-<%= form_for(@review) do |f| %>
-    <div>
-        <%= f.label :state_id, "Select a State:"%>
-        <%= f.collection_select :state_id, State.all.alpha, :id, :place_and_country  %>
-        <br><br>
-    </div>
-    <div>
-        <%= f.label :stars %>
-        <%= f.number_field :stars, min:0, max:5 %><br>
-        <br>
-    </div>
-    <div>
-        <%= f.label :title %><br>
-        <%= f.text_field :title %>
-    </div>
-    <div>
-        <%= f.label :content %><br>
-        <%= f.text_area :content %>
-    </div>
-
-    <p><%= f.submit "Add Review" %></p>
-<% end %>
+<%= render partial: 'add_review'%>

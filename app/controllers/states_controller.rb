@@ -1,4 +1,5 @@
 class StatesController < ApplicationController
+    before_action :set_state, only: [:show, :destroy]
 
     def new 
         @state = State.new
@@ -15,7 +16,6 @@ class StatesController < ApplicationController
     end 
 
     def show 
-        @state = State.find(params[:id])
     end 
 
     def index 
@@ -23,7 +23,6 @@ class StatesController < ApplicationController
     end 
 
     def destroy 
-        @state = State.find_by_id(params[:id])
         @state.destroy 
         redirect_to states_path
     end 
@@ -32,6 +31,10 @@ class StatesController < ApplicationController
 
     def state_params 
         params.require(:state).permit(:place, :description, :country_id, country_attributes: [:name])
+    end 
+
+    def set_state
+        @state = State.find_by_id(params[:id])
     end 
 
 end

@@ -2,12 +2,4 @@
 
 <%= render partial: "layouts/error", locals: {object: @user} %>
 
-<%= form_for(@user) do |f| %>
-    <p><%= f.label :username %></p>
-    <p><%= f.text_field :username %></p>
-
-    <p><%= f.label :password %></p>
-    <p><%= f.password_field :password %></p>
-    
-    <p><%= f.submit "Create Account" %></p>
-<% end %>
+<%= render partial: "sessions/save_user" %>

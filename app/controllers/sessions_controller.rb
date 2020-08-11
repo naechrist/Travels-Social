@@ -16,9 +16,7 @@ class SessionsController < ApplicationController
             @user = User.create_by_google_omniauth(auth)
             session[:user_id] = @user.id 
             redirect_to user_path(@user)
-       
         else 
-
             @user = User.find_by(username: params[:user][:username]) #try to find user in system 
             if @user && @user.authenticate(params[:user][:password]) #did we find someone and did they put in the right pass
                 session[:user_id] = @user.id #store in session 
