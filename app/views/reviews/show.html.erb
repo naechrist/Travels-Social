@@ -1,1 +1,4 @@
-<h1><%= @review.stars %>stars -<%= @review.title %></h1>
+<h1><%= @review.stars %> stars -<%= @review.title %></h1>
+<p><%= @review.content %><br><br>
+
+<%= link_to "Edit Review", edit_review_path %>

@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <style>
+            h1 {text-align: center;}
+            h2 {text-align: center;}
+            h3 {text-align: center;}
+            h4 {text-align: center;}
+            h5 {text-align: center;}
+            p {text-align: center;}
+            div {text-align: center;}
+            
+        </style> 
     <title>TravelsSocial</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -9,14 +19,17 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <div>
-    <%= link_to "Log Out", logout_path, method: :delete %>
-    <%= link_to "Add a State", new_state_path %>
-    <%= link_to "All Countries", countries_path %>
-    <%= link_to "All States", states_path %>
-    <%= link_to "Add a Review", new_review_path %>
+<% unless params[:action] == 'welcome' %>
+    <div class="contaner-fluid custom-padding full-page-height">
+
+    <%= link_to "Log Out", logout_path, method: :delete %> - 
+    <%= link_to "Add a State", new_state_path %> - 
+    <%= link_to "All Countries", countries_path %> - 
+    <%= link_to "All States", states_path %> - 
+    <%= link_to "Add a Review", new_review_path %> - 
     <%= link_to "All Reviews", reviews_path %>
   </div>
+<% end %>
 
   <body>
     <%= yield %>

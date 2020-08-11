@@ -1,6 +1,11 @@
-<h1>All of the States</h1>
+<h1>All Locations </h1>
+<h4><%= link_to "Add a new Place", new_state_path %></h4>
 
 <% @states.each do |s| %>
-    <h2><%= s.place %> - <%= s.description %></h2>
-    <%= link_to "Write a Review", new_state_review_path(s.id) %>
+    <h2><%= s.place %></h2>
+    <h3><%= s.description %></h3>
+    <p><%= link_to "Write a Review", new_state_review_path(s.id) %></p>
+    <h5><%= link_to 'Delete Location', { action: :destroy, id: s.id }, method: :delete, data: { confirm: 'Are you sure?' } %></h5>
+    <br>
 <% end %>
+

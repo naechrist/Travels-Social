@@ -19,7 +19,13 @@ class StatesController < ApplicationController
     end 
 
     def index 
-        @states = State.order_by_rating 
+        @states = State.alpha
+    end 
+
+    def destroy 
+        @state = State.find_by_id(params[:id])
+        @state.destroy 
+        redirect_to states_path
     end 
 
     private 

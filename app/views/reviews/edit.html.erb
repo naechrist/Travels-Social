@@ -1,5 +1,4 @@
-
-    <h1>Add a Review</h1>
+<h1>Edit your Review here</h1>
 
 
 <%= render partial: "layouts/error", locals: {object: @review} %>
@@ -7,7 +6,7 @@
 <%= form_for(@review) do |f| %>
     <div>
         <%= f.label :state_id, "Select a State:"%>
-        <%= f.collection_select :state_id, State.all.alpha, :id, :place_and_country  %>
+        <%= f.collection_select :state_id, State.all.alpha, :id, :place_and_country %>
         <br><br>
     </div>
     <div>
@@ -25,4 +24,7 @@
     </div>
 
     <p><%= f.submit "Add Review" %></p>
+
 <% end %>
+
+<p><%= link_to 'Delete Review', { action: :destroy, id: @review.id }, method: :delete, data: { confirm: 'Are you sure?' } %></p>

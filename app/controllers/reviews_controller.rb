@@ -10,12 +10,14 @@ class ReviewsController < ApplicationController
     end 
 
     def index 
-        #check if its nested or not
-        if @state = State.find_by_id(params[:state_id]) #nested
-            @reviews = @state.reviews #all of this states reviews
-        else 
-            @reviews = Review.all 
-        end 
+        
+            @reviews = Review.all
+            if params[:search]
+              @reviews = Review.search(params[:search]).order("created_at DESC")
+            else
+              @reviews = Review.all.order("created_at DESC")
+            end
+          
     end 
 
     def create 
@@ -29,6 +31,22 @@ class ReviewsController < ApplicationController
 
     def show 
         @review = Review.find_by_id(params[:id])
+    end 
+
+    def edit 
+        @review = Review.find_by_id(params[:id])
+    end 
+
+    def update 
+        @review = Review.find_by_id(params[:id])
+        @review.update(review_params)
+        redirect_to review_path(@review)
+    end 
+
+    def destroy 
+        @review = Review.find_by_id(params[:id])
+        @review.destroy 
+        redirect_to reviews_path
     end 
 
     private 

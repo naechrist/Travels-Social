@@ -1,8 +1,17 @@
-<h1>All of the Reviews</h1>
+<h1>All Reviews</h1>
+
+<div>
+    <%= form_tag(reviews_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search Reviews" %>
+        <%= submit_tag "Search", :name => nil %>
+    <% end %>
+</div>
 
 <ul>
-    <% @reviews.each do |r| %>
-       <li><h2><%= r.state.place%>: <%= r.title %> - <%= r.stars %> stars </h2></li>
+    <% @reviews.order_by_rating.each do |r| %>
+       <h2><%= r.state.place%>: <%= r.state.description%>
+       <h2><%= r.title %> - <%= r.stars %> stars </h2>
         <p><%= r.content %></p>
+        <p><%= link_to "Edit Review", edit_review_path(r) %></p><br>
     <% end %>
 </ul>
