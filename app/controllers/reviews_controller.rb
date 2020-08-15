@@ -1,7 +1,8 @@
 class ReviewsController < ApplicationController
     before_action :set_review, only: [:show, :edit, :update, :destroy]
+    before_action :log_in_to_edit, only: [:new, :create, :edit, :update, :destroy]
     
-    def new 
+    def new  
         if @state = State.find_by(params[:state_id])
             @review = @state.reviews.build
         else 
@@ -15,7 +16,7 @@ class ReviewsController < ApplicationController
         if params[:search]
             @reviews = Review.search(params[:search]).order("created_at DESC")
         else
-            @reviews = Review.all.order("created_at DESC")
+            @reviews = Review.all.order_by_rating
         end
     end 
 
@@ -52,5 +53,11 @@ class ReviewsController < ApplicationController
 
     def set_review
         @review = Review.find_by_id(params[:id])
+    end 
+
+    def log_in_to_edit
+        if !logged_in?
+            redirect_to login_path
+        end 
     end 
 end

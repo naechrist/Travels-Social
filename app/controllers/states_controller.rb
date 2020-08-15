@@ -1,5 +1,6 @@
 class StatesController < ApplicationController
     before_action :set_state, only: [:show, :destroy]
+    before_action :log_in_to_edit, only: [:new, :create, :destroy]
 
     def new 
         @state = State.new
@@ -20,6 +21,11 @@ class StatesController < ApplicationController
 
     def index 
         @states = State.alpha
+        if params[:search]
+            @states = State.search(params[:search]).order("created_at DESC")
+        else
+            @states = State.all
+        end
     end 
 
     def destroy 
@@ -36,5 +42,11 @@ class StatesController < ApplicationController
     def set_state
         @state = State.find_by_id(params[:id])
     end 
+
+    def log_in_to_edit
+        if !logged_in?
+            redirect_to login_path
+        end 
+    end
 
 end

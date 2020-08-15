@@ -4,7 +4,7 @@ class State < ApplicationRecord
     has_many :reviews
     has_many :users, through: :reviews #people who have reviewd it
     #accepts_nested_attributes_for :country
-    validates :place, presence: true
+    validates :place, uniqueness: true, presence: true 
     validate :not_a_duplicate 
 
     
@@ -25,4 +25,8 @@ class State < ApplicationRecord
     def place_and_country #model methods are instance methods 
         "#{place} - #{country.name}"
     end     
+
+    def self.search(search)
+        where("place LIKE ? OR description LIKE ?", "%#{search}%", "%#{search}%") 
+      end
 end

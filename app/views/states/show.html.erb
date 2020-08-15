@@ -1,3 +1,5 @@
 <h2><%= @state.place %></h2>
 
-<p><%= @state.description %></p>
+<h3><%= @state.description %></h3>
+
+<p><%= link_to "Write a Review", new_state_review_path(@state.id) %></p>
