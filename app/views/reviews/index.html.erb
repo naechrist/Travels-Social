@@ -8,13 +8,17 @@
 </div>
 
 <ul>
-    <% @reviews.order_by_rating.each do |r| %>
-       <h2 style="color: #228B22;"><%= r.state.place%>: <%= r.state.description%>
-       <h3 style="color: #FAF0E6;"><%= r.title %> - <%= r.stars %> stars </h3>
-        <p style="color: #FFFF00"><%= r.content %></p>
+    
+        <% @reviews.order_by_rating.each do |r| %>
+        <div class="white-box">
+        <h2 style="color: #2F4F4F;"><%= r.state.place%>: <%= r.state.description%>
+        <h3 style="color: #000000;"><%= r.title %> - <%= r.stars %> stars </h3>
+        <p style="color: #000000"><%= r.content %></p>
         <% if current_user == r.user %>
-            <p><%= link_to "Edit Review", edit_review_path(r), {:style=>'color:#FFA500;', :class => "css_class"} %></p><br>
+            <p><%= link_to "Edit Review", edit_review_path(r), {:style=>'color:#FFD700;', :class => "css_class"} %></p><br>
         <% end %>
+        </div>
         <br>
-    <% end %>
+        <% end %>
+    
 </ul>
