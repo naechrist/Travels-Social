@@ -28,7 +28,6 @@ class SessionsController < ApplicationController
         end 
     end 
 
-
     private 
 
     def auth 

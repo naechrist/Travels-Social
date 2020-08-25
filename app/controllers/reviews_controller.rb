@@ -21,7 +21,7 @@ class ReviewsController < ApplicationController
     end 
 
     def create 
-        @review = current_user.reviews.build(review_params)
+        @review = current_user.reviews.build(review_params) #use .build b/c it returnes a new object w its own new forign key 
         if @review.save 
             redirect_to review_path(@review)
         else 
@@ -34,6 +34,7 @@ class ReviewsController < ApplicationController
 
     def edit 
     end 
+
 
     def update 
         @review.update(review_params)

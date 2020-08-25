@@ -4,4 +4,5 @@
 <%= render partial: "layouts/error", locals: {object: @review} %>
 
 <%= render partial: 'add_review' %>
+
 <p><%= link_to 'Delete Review', { action: :destroy, id: @review.id }, method: :delete, data: { confirm: 'Are you sure?' } %></p>
