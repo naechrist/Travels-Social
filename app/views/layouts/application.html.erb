@@ -19,7 +19,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-<% unless params[:action] == 'welcome' %>
+<% if logged_in? %>
     <div class="contaner-fluid custom-padding full-page-height">
 
     <%= link_to "Log Out", logout_path, method: :delete %> - 
@@ -27,7 +27,8 @@
     <%= link_to "All Countries", countries_path %> - 
     <%= link_to "All States", states_path %> - 
     <%= link_to "Add a Review", new_review_path %> - 
-    <%= link_to "All Reviews", reviews_path %>
+    <%= link_to "All Reviews", reviews_path %> - 
+    <%= link_to "Your Reviews", users_reviews_path %>
   </div>
 <% end %>
 
