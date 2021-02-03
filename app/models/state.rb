@@ -1,6 +1,6 @@
 class State < ApplicationRecord
     belongs_to :country
-    belongs_to :user #creator of it 
+    belongs_to :user, optional: true #creator of it 
     has_many :reviews
     has_many :users, through: :reviews #people who have reviewd it
     

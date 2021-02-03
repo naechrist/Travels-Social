@@ -20,7 +20,7 @@
     <p> Or add a new country: </p>
     <div> 
         <%= f.fields_for :country, Country.new do |c| %>
-            <%= c.label :name %>
+            <%= c.label :name, 'Country' %>
             <%= c.text_field :name %>
         <% end %>
     </div>

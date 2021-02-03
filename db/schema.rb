@@ -10,12 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_09_055938) do
+ActiveRecord::Schema.define(version: 2021_02_03_221738) do
 
   create_table "countries", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "place"
+    t.string "description"
+    t.boolean "pet_friendly"
+    t.integer "state_id"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["state_id"], name: "index_locations_on_state_id"
+    t.index ["user_id"], name: "index_locations_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -48,6 +60,8 @@ ActiveRecord::Schema.define(version: 2020_08_09_055938) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "locations", "states"
+  add_foreign_key "locations", "users"
   add_foreign_key "reviews", "states"
   add_foreign_key "reviews", "users"
   add_foreign_key "states", "countries"
