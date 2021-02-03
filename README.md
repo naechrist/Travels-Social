@@ -1,3 +1,6 @@
+
+After you clone, bundle install, bundle exec rake db:migrate, and shotgun to open in browser.
+
 # README
 
 This README would normally document whatever steps are necessary to get the
