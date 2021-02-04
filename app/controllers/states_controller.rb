@@ -23,7 +23,7 @@ class StatesController < ApplicationController
         if params[:search]
             @states = State.search(params[:search]).order("created_at DESC")
         else
-            @states = State.all
+            @states = State.alpha
         end
     end 
 
