@@ -3,6 +3,13 @@
 <%= render partial: "layouts/error", locals: {object: @state} %>
 
 <%= form_for(@state) do |f| %> 
+
+    <p> Select the country: </p>
+    <div>
+        <%= f.collection_select :country_id, Country.all, :id, :name, include_blank: "Select a country" %>
+    </div>
+    <p> If country not listed, click <%= link_to "here", new_country_url %> to add. </p>
+    
     <div>
         <%= f.label :place, 'State' %><br>
         <%= f.text_field :place %><br><br>

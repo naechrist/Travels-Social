@@ -1,0 +1,8 @@
+<h1> New Country </h1>
+
+<%= form_for(@country) do |f| %>
+    <div>
+        <%= f.text_field :name %>
+    </div>
+    <br><p><%= f.submit "Add Country"%></p>
+<% end %>
