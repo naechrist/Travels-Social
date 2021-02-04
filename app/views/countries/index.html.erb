@@ -1,7 +1,9 @@
 <h1> All Countries <h1>
 
+<p style="color: black;"> If country not listed, click <%= link_to "here", new_country_url %> to add. </p>
+
 
 <% @countries.each do |c| %>
-    <p style="color: #2F4F4F;"><%= c.name %></p>
+    <p style="color: #352315;"><b><%=c.name %></b></p>
 <% end %>
 

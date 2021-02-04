@@ -3,3 +3,5 @@
 <h3><%= @state.description %></h3>
 
 <p><%= link_to "Write a Review", new_state_review_path(@state.id) %></p>
+<br>
+<p><%= link_to "Go Back to All States", states_path(@state.id) %></p>
