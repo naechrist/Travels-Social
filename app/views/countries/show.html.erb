@@ -1,0 +1,4 @@
+<h2><%= @country.name %></h2>
+
+<p><%= link_to "Add a State", new_state_path(@country.id) %></p>
+<p><%= link_to "Add a Specific Location", new_location_path(@country.id) %></p>

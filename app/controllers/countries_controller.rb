@@ -1,5 +1,5 @@
 class CountriesController < ApplicationController
-    before_action :set_state, only: [:show, :destroy]
+    before_action :set_country, only: [:show, :destroy]
     before_action :log_in_to_edit, only: [:new, :create, :destroy]
 
     def new
@@ -29,7 +29,7 @@ class CountriesController < ApplicationController
 
     private
 
-    def set_params
+    def country_params
         params.require(:country).permit(:name)
     end 
 
