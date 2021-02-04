@@ -1,5 +1,34 @@
 <h1>New Location</h1>
 
-<%= render 'form', location: @location %>
+<%= render partial: "layouts/error", locals: {object: @location} %>
 
-<%= link_to 'Back', locations_path %>
+<%= form_for(@location) do |f| %>
+    <div>
+        <%= f.label :place, 'Place'%><br>
+        <%= f.text_field :place %><br><br>
+    </div>
+    <div>
+        <%= f.label :description, 'Description'%><br>
+        <%= f.text_area :description %>
+    </div>
+
+    <p> Is this location pet friendly? If unknown, leave blank. 
+        <%= f.check_box :pet_friendly %> 
+    </p>
+
+    <p> Select the state: </p>
+        <div>
+            <%= f.collection_select :state_id, State.all, :id, :place, include_blank: "Select a state" %>
+        </div>
+
+    <p> Or add a new state: </p>
+    <div> 
+        <%= f.fields_for :state, State.new do |s| %>
+            <%= s.label :place, 'State' %>
+            <%= s.text_field :place %>
+        <% end %>
+    </div>
+
+    <br><p><%= f.submit "Add Location" %></p>
+<% end %>
+

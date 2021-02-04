@@ -1,4 +1,4 @@
-<h1>Add a Location</h1>
+<h1>New State</h1>
 
 <%= render partial: "layouts/error", locals: {object: @state} %>
 
@@ -12,7 +12,7 @@
         <%= f.text_area :description %>
     </div>
 
-    <p> Select a country that you've already visited: </p>
+    <p> Select the country: </p>
     <div>
         <%= f.collection_select :country_id, Country.all, :id, :name, include_blank: "Select a country" %>
     </div>
@@ -25,5 +25,5 @@
         <% end %>
     </div>
 
-    <br><p><%= f.submit "Add Location" %></p>
+    <br><p><%= f.submit "Add State" %></p>
 <% end %>
