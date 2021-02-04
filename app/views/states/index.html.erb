@@ -10,7 +10,7 @@
 
 <% @states.all.each do |s| %>
     <div class="white-box">
-    <h2 style="color: #2F4F4F;"><%= s.place %></h2>
+    <h2 style="color: #2F4F4F;"><%= s.place %>, <%= s.country.name %></h2>
     <h3 style="color: #000000;"><%= s.description %></h3>
             <h5 style="color: black;">Click <%= link_to 'here', { action: :destroy, id: s.id }, method: :delete, data: { confirm: 'Are you sure?' } %> to delete state.</h5>
         <p><%= link_to "Write a Review", new_state_review_path(s.id), {:style=>'color:#FFFF00;', :class => "css_class"} %></p>
