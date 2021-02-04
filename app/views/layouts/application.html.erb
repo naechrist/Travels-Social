@@ -9,6 +9,8 @@
             h5 {text-align: center;}
             p {text-align: center;}
             div {text-align: center;}
+            ul {display:table-cell;}
+            li {display:table;}
             
         </style> 
     <title>TravelsSocial</title>
@@ -22,15 +24,15 @@
 <% unless params[:action] == 'welcome' %>
     <div class="contaner-fluid custom-padding full-page-height">
 
-    <%= link_to "Log Out", logout_path, method: :delete %> - 
-    <%= link_to "Add a State", new_state_path %> - 
-    <%= link_to "All Countries", countries_path %> - 
-    <%= link_to "All States", states_path %> - 
-    <%= link_to "Add a Review", new_review_path %> - 
-    <%= link_to "All Reviews", reviews_path %> - 
-    <%= link_to "Your Reviews", users_reviews_path %> - 
-    <%= link_to "All Locations", locations_path %> - 
-    <%= link_to "Add a Location", new_location_path %>
+    <center><ul><%= link_to "Log Out", logout_path, method: :delete %></ul>
+    <ul><%= link_to "All Countries", countries_path %></ul>
+    <ul><li><%= link_to "All States", states_path %></li>
+        <li><%= link_to "Add a State", new_state_path %></li></ul>
+    <ul><li><%= link_to "All Locations", locations_path %></li>
+        <li><%= link_to "Add a Location", new_location_path %></li></ul>
+    <ul><li><%= link_to "All Reviews", reviews_path %></li>
+        <li><%= link_to "Add a Review", new_review_path %></li>
+        <li><%= link_to "Your Reviews", users_reviews_path %></li></ul><center>
   </div>
 <% end %>
 
